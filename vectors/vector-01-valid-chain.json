@@ -1,0 +1,175 @@
+{
+  "vector_id": "V-01",
+  "description": "valid three-link chain verifies",
+  "keys": {
+    "ztaf-vector-root-issuer": {
+      "seed_hex": "a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1",
+      "public_hex": "bc7cbcb5636375fa1d82434d466724d92377f53b980695dd49d26d0ce12205a5"
+    },
+    "ztaf-vector-intermediate-issuer": {
+      "seed_hex": "b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2b2",
+      "public_hex": "55154f42065ea5a1bea05463826be2684eb92df92c100027aabaae57ca554207"
+    }
+  },
+  "mandates": [
+    {
+      "zt_mandate_version": "0.1.0",
+      "mandate_id": "ZT-MND-VEC-0001",
+      "mandate_version": 1,
+      "issuer": "operations-director",
+      "issuer_key_id": "ztaf-vector-root-issuer",
+      "subject": "payments-desk",
+      "originator": "Emmanuel A. Otchere (operations principal)",
+      "outcomes": [
+        "issue a customer refund within policy"
+      ],
+      "constraints": [
+        {
+          "type": "outcome-scope",
+          "value": [
+            "refund-issue"
+          ]
+        },
+        {
+          "type": "resource-scope",
+          "value": [
+            "payments-api"
+          ]
+        },
+        {
+          "type": "budget",
+          "value": {
+            "unit": "EUR",
+            "amount": 5000
+          }
+        }
+      ],
+      "escalation": {
+        "threshold": "single refund above EUR 500",
+        "channel": "oversight-desk"
+      },
+      "validity": {
+        "not_before": "2026-01-01T00:00:00Z",
+        "not_after": "2027-01-01T00:00:00Z"
+      },
+      "required_grade": "TG-2",
+      "revocation": {
+        "method": "status-list",
+        "endpoint": "https://vector.invalid/status"
+      },
+      "issuer_signature": "3M4aua7I/3Z2iWjJqjqUpL41C9mOtL6FK2vLz47zzunx5xhTWVSRjozjs+minr7gD0MZgCIHI/fzdpmQgGrkCg=="
+    },
+    {
+      "zt_mandate_version": "0.1.0",
+      "mandate_id": "ZT-MND-VEC-0002",
+      "mandate_version": 1,
+      "issuer": "payments-desk",
+      "issuer_key_id": "ztaf-vector-intermediate-issuer",
+      "subject": "refund-agent-fleet",
+      "parent": {
+        "mandate_id": "ZT-MND-VEC-0001",
+        "mandate_hash": "zt-sha256:0e3694fca20553a305e6a73470393113a2b0ed12ec868cb2bbd7abb80d4685f1"
+      },
+      "outcomes": [
+        "issue a customer refund within policy"
+      ],
+      "constraints": [
+        {
+          "type": "outcome-scope",
+          "value": [
+            "refund-issue"
+          ]
+        },
+        {
+          "type": "resource-scope",
+          "value": [
+            "payments-api"
+          ]
+        },
+        {
+          "type": "budget",
+          "value": {
+            "unit": "EUR",
+            "amount": 1000
+          }
+        }
+      ],
+      "escalation": {
+        "threshold": "single refund above EUR 500",
+        "channel": "oversight-desk"
+      },
+      "validity": {
+        "not_before": "2026-06-01T00:00:00Z",
+        "not_after": "2026-12-31T00:00:00Z"
+      },
+      "required_grade": "TG-2",
+      "revocation": {
+        "method": "status-list",
+        "endpoint": "https://vector.invalid/status"
+      },
+      "issuer_signature": "rMBccS2WBjpf7x3Y7TCFtSQ1ipQyj15xDtWyoB5mC90LoiaAOVj4z+OS1cJNyi0ESJuLNVxoanSVkmwMUpT/Dw=="
+    },
+    {
+      "zt_mandate_version": "0.1.0",
+      "mandate_id": "ZT-MND-VEC-0003",
+      "mandate_version": 1,
+      "issuer": "payments-desk",
+      "issuer_key_id": "ztaf-vector-intermediate-issuer",
+      "subject": "refund-agent-42",
+      "parent": {
+        "mandate_id": "ZT-MND-VEC-0002",
+        "mandate_hash": "zt-sha256:739d27953749faf44c34841d33e04b033874e51269e073d0ec2c9460ee071cc0"
+      },
+      "outcomes": [
+        "issue a customer refund within policy"
+      ],
+      "constraints": [
+        {
+          "type": "outcome-scope",
+          "value": [
+            "refund-issue"
+          ]
+        },
+        {
+          "type": "resource-scope",
+          "value": [
+            "payments-api"
+          ]
+        },
+        {
+          "type": "budget",
+          "value": {
+            "unit": "EUR",
+            "amount": 200
+          }
+        }
+      ],
+      "escalation": {
+        "threshold": "single refund above EUR 200",
+        "channel": "oversight-desk"
+      },
+      "validity": {
+        "not_before": "2026-11-01T00:00:00Z",
+        "not_after": "2026-12-01T00:00:00Z"
+      },
+      "required_grade": "TG-2",
+      "revocation": {
+        "method": "status-list",
+        "endpoint": "https://vector.invalid/status"
+      },
+      "issuer_signature": "27dONLDdsciIBfuydWEydK0+tg80nvV3vGuYG9SOTNjLzxdmImeOOI/eED2ASy07pJWYIWEXQIoya/Q9OxyVAQ=="
+    }
+  ],
+  "status_list": {
+    "zt_status_version": "0.1.0",
+    "updated": "2026-11-22T12:00:00Z",
+    "entries": {},
+    "issuer_key_id": "ztaf-vector-root-issuer",
+    "issuer_signature": "9axRYk9rWGTT4T4KsaGCuJoge+KX5FaGJ0+1kH2EzJqv4UUI+mn3FbIRL/3eh3ED6RziI2o9CV84E0yAf9h7DQ=="
+  },
+  "now": "2026-11-23T00:00:00Z",
+  "subject": "refund-agent-42",
+  "expect": {
+    "result": "ok"
+  }
+}

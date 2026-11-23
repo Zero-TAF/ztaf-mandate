@@ -1,0 +1,16 @@
+{
+  "vectors": [
+    "vector-01-valid-chain.json",
+    "vector-02-broken-signature.json",
+    "vector-03-validity-escapes-parent.json",
+    "vector-04-loose-budget.json",
+    "vector-05-revoked-intermediate.json",
+    "vector-06-grade-descent.json",
+    "vector-07-parent-hash-mismatch.json",
+    "vector-08-unknown-constraint-type.json",
+    "vector-09-subject-mismatch.json",
+    "vector-10-dropped-parent-constraint.json"
+  ],
+  "now": "2026-11-23T00:00:00Z",
+  "note": "Seeds are fixed constants; regenerate byte-identically with tools/gen_vectors.py."
+}
