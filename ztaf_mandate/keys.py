@@ -11,7 +11,10 @@ from __future__ import annotations
 from typing import Callable, Dict
 
 from cryptography.hazmat.primitives import serialization
-from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
+from cryptography.hazmat.primitives.asymmetric.ed25519 import (
+    Ed25519PrivateKey,
+    Ed25519PublicKey,
+)
 
 # A KeyProvider maps issuer_key_id -> raw 32-byte Ed25519 public key.
 KeyProvider = Callable[[str], bytes]
@@ -52,7 +55,7 @@ def sign(private: Ed25519PrivateKey, digest_bytes: bytes) -> bytes:
 def verify(public_raw: bytes, digest_bytes: bytes, signature: bytes) -> bool:
     """Verify a signature over a digest with a raw public key."""
     try:
-        public = Ed25519PrivateKey.from_public_bytes(public_raw).public_key()
+        public = Ed25519PublicKey.from_public_bytes(public_raw)
         public.verify(signature, digest_bytes)
         return True
     except Exception:
